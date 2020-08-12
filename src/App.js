@@ -29,11 +29,6 @@ class App extends Component {
     }
   }
 
-  handleFormSubmit = (e) => {
-    e.preventDefault();
-    this.sock.send(e.target[0].value);
-  }
-
   render() {
     return (
       <div className="App">

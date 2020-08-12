@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
+import React from 'react';
 
-class Chat extends Component {
+class Chat extends React.Component {
 
     handleFormSubmit = (e) => {
         e.preventDefault();
@@ -10,9 +10,8 @@ class Chat extends Component {
 
     render() {
 
-        let i = 0,
-        messages = this.props.messages.map(message => {
-        return <li className="list-group-item" key={i++}>{message}</li>
+        let messageList = this.props.messages.map((message, index) => {
+        return <li className="list-group-item" key={index}>{message}</li>
         })
 
         return (
@@ -20,14 +19,14 @@ class Chat extends Component {
                 <form onSubmit={this.handleFormSubmit}>
                     <div className="form-group">
                         <div className="input-group">
-                            <input type="text" placeholder="Type here to chat..." ref="messageText" className="form-control" />
+                            <input type="text" placeholder="Type here to chat..." className="form-control" ref="messageText" />
                             <span className="input-group-btn">
                                 <button type="submit" className="btn btn-primary">Send</button>
                             </span>
                         </div>
                     </div>
                 </form>
-                <ul className="list-group">{messages}</ul>
+                <ul className="list-group">{messageList}</ul>
             </div>
         )
     }
